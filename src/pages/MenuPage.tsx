@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+
 import { useSelectorTyped } from 'hooks'
+
+import Food from 'types/Food'
+
+import Card, { CardField } from 'components/Card'
+
 import { menuAddFood } from 'store/actions/menuActions'
+
 
 const MenuPage: React.FC = () => {
 
@@ -25,24 +32,12 @@ const MenuPage: React.FC = () => {
       <>
          <h1>Menu</h1>
 
-         {menu.map(food => {
+         {menu.map((food: Food) => {
             return (
                
-               <div className="col s12 m7">
-                  <div className="card">
-                     <div className="card-image">
-                     <img src="images/sample-1.jpg" alt={food.name}/>
-                     <span className="card-title">{food.name}</span>
-                     </div>
-                     <div className="card-content">
-                        <p>Callories: {food.callories}</p>
-                        <p>Vegan: {food.isVegan}</p>
-                     </div>
-                     <div className="card-action">
-                        Price: {food.price}
-                     </div>
-                  </div>
-               </div>
+               <Card item={food} title={food.name} price={food.price}>
+                  <CardField label="callories" field="name" />
+               </Card>
             )
          })}
       </>
