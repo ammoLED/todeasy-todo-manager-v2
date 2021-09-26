@@ -5,7 +5,7 @@ import { useSelectorTyped } from 'hooks'
 
 import Food from 'types/Food'
 
-import Card, { CardField } from 'components/Card'
+import Card, { Field } from 'components/Card'
 
 import { menuAddFood } from 'store/actions/menuActions'
 
@@ -34,8 +34,9 @@ const MenuPage: React.FC = () => {
 
          {menu.map((food: Food) => {
             return (
-               
                <Card item={food} title={food.name} price={food.price}>
+                  <Field<Food> field="callories" label="Callories" />
+                  <Field<Food> field="isVegan" label="For Vegan" />
                </Card>
             )
          })}
