@@ -36,7 +36,6 @@ const MenuPage: React.FC = () => {
             return (
                
                <Card item={food} title={food.name} price={food.price}>
-                  <CardField label="callories" field="name" />
                </Card>
             )
          })}

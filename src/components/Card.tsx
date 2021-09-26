@@ -2,16 +2,21 @@ import React from 'react'
 
 import Food from 'types/Food'
 
+
+/* 
+    ! https://www.typescriptlang.org/play?jsx=0#code/JYOwLgpgTgZghgYwgAgIIAdgHkBGArCBMAZ2QG8AoZa5ABSgHsCiAucqmz9RgOTgFsIbYmCigA5h2oBfKcgBKEYgwCuUJG0qdOUJQFUoAG2GiJcnQxNiQkzrNkUwAT3QoM2fIRIBpCE9IAvMgA1n4MMGiYuMwkFI4uKLRwYAAWxAA8ACoAfMhBABQM+GyZAJR5uXAgTgDaALpxoJCwiCgA4hBg0UlQAhmZyBAAHpAgACak7tFexL7+uVo0wGNWEgA0cs6uJXLoySlsSakZU55ExDWZddkUDjAqIETADCDI4p3RWYMjEOOTUWcfH5iNl8ntevxiGwOl18D0+llsqU2FUnOwdJ01K8AOROJTY25xBAvETIZSCPJvD74fJkZZsbFjGBM7FrZBbITIABE9CYXi5bL2qTYXN0xAMhi5yGkpSAA
+
+*/
 interface User {
     name: number,
     age: string
 }
 
-type AcceptedItems = Food | User
+type AcceptedItems =  Food | User
 
 
-interface CardProps {
-    item: AcceptedItems
+interface CardProps{
+    item: any
     title: string
     price: number
 }
@@ -45,16 +50,16 @@ const Card: React.FC<CardProps> = ({item, title, price, children}) => {
 export default Card
 
 // Fields
-interface CardFieldProps {
+interface FieldProps {
     item?: AcceptedItems
     field: keyof AcceptedItems
     label: string
 }
 
-const CardField: React.FC<CardFieldProps> = ({item, field, label}) => {
+const Field = ({item, field, label}: FieldProps) => {
     return (
         <p>{label}: {item![field]}</p>
     )
 }
 
-export { CardField }
+export { Field }
