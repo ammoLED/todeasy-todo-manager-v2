@@ -2,6 +2,9 @@ import Section from "types/Section";
 import Todo from "types/Todo";
 import TodoActionTypes from "store/actions/todoActions";
 
+export default interface TodoState {
+    all: Todo[]
+}
 
 // Action Types
 export interface AddTodoAction {
@@ -20,13 +23,12 @@ export interface DeleteTodoAction {
     }
 }
 
-export interface ChangeTodoStatusAction {
-    type: TodoActionTypes.UPDATE_SECTION_TODO_COMPLETED,
-    payload: {
-        sectionTitle: Section["title"] 
+export interface SwitchTodoCompletedAction {
+    type: TodoActionTypes.SWITCH_SECTION_TODO_COMPLETED,
+    payload: { 
+        sectionTitle: Section["title"]
         todoId: Todo["id"]
-        completed: Todo["completed"]
     }
 }
 
-export type TodoAction = AddTodoAction | DeleteTodoAction | ChangeTodoStatusAction
+export type TodoAction = AddTodoAction | DeleteTodoAction | SwitchTodoCompletedAction

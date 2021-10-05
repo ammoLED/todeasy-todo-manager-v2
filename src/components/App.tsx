@@ -1,6 +1,8 @@
 
 import React from 'react'
-import { Switch } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
+
+import routes from 'pages/routes';
 
 const App: React.FC = () => {
   
@@ -9,7 +11,11 @@ const App: React.FC = () => {
 
       <div className="container">
         <Switch>
-         
+          {
+            routes.map( (route) => {
+              return <Route path={route.path} component={route.Component} exact key={route.path} />
+            })
+          }
         </Switch>
       </div>
     </div>

@@ -17,7 +17,7 @@ export interface AddSectionAction {
 export interface DeleteSectionAction {
     type: SectionActionTypes.DELETE_SECTION,
     payload: {
-        title: Section["title"]
+        title: Section["title"] // As ID
     }
 }
 

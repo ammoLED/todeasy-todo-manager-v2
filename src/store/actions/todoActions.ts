@@ -1,11 +1,11 @@
 import Section from "types/Section";
 import Todo from "types/Todo";
-import { AddTodoAction, DeleteTodoAction, ChangeTodoStatusAction } from "types/TodoStore";
+import { AddTodoAction, DeleteTodoAction, SwitchTodoCompletedAction } from "store/types/TodoStore";
 
 enum TodoActionTypes {
     ADD_SECTION_TODO = 'ADD_SECTION_TODO',
     DELETE_SECTION_TODO = 'DELETE_SECTION_TODO',
-    UPDATE_SECTION_TODO_COMPLETED = 'UPDATE_SECTION_TODO_COMPLETED'
+    SWITCH_SECTION_TODO_COMPLETED = 'SWITCH_SECTION_TODO_COMPLETED'
 }
 export default TodoActionTypes
 
@@ -27,11 +27,10 @@ export const deleteSectionTodo = (sectionTitle: Section["title"], todoId: Todo["
     }
 })
 
-export const changeSectionTodoCompleted = (sectionTitle: Section["title"], todoId: Todo["id"], completed: Todo["completed"]): ChangeTodoStatusAction => ({
-    type: TodoActionTypes.UPDATE_SECTION_TODO_COMPLETED,
+export const changeSectionTodoCompleted = (sectionTitle: Section["title"], todoId: Todo["id"]): SwitchTodoCompletedAction => ({
+    type: TodoActionTypes.SWITCH_SECTION_TODO_COMPLETED,
     payload: {
         sectionTitle,
-        todoId, 
-        completed
+        todoId
     }
 })
