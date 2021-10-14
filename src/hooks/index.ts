@@ -1,3 +1,3 @@
-// import useSelectorTyped from './useSelectorTyped'
+import useTypedSelector from "hooks/useTypedSelector";
 
-export {  }
+export { useTypedSelector }

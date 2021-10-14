@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
-import Category from 'components/Category'
+import Category from "components/Category";
 
-import useTypedSelector from 'hooks/useTypedSelector'
+import { useTypedSelector } from "hooks";
 
 const Categories: React.FC = () => {
 

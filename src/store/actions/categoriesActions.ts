@@ -1,10 +1,12 @@
 
+import { ActionCreator } from "types";
 import Category from "types/Category";
 
 export enum CategoriesActionTypes {
-    ADD_CATEGORY    = 'ADD_CATEGORY',
-    DELETE_CATEGORY = 'DELETE_CATEGORY'
+    ADD_CATEGORY    = "ADD_CATEGORY",
+    DELETE_CATEGORY = "DELETE_CATEGORY"
 }
+
 
 // ADD_CATEGORY
 interface AddCategoryAction {
@@ -14,11 +16,9 @@ interface AddCategoryAction {
     }
 }
 
-export const addCategory = (category: Category): AddCategoryAction => ({
+export const addCategory: ActionCreator<AddCategoryAction> = ({ category }) => ({
     type: CategoriesActionTypes.ADD_CATEGORY,
-    payload: {
-        category
-    }
+    payload: { category }
 })
 // /ADD_CATEGORY
 
@@ -31,11 +31,9 @@ interface DeleteCategoryAction {
     }
 }
 
-export const deleteCategory = (title: Category["title"]): DeleteCategoryAction => ({
+export const deleteCategory: ActionCreator<DeleteCategoryAction> = ({ title }) => ({
     type: CategoriesActionTypes.DELETE_CATEGORY,
-    payload: {
-        title
-    }
+    payload: { title }
 })
 // /DELETE_CATEGORY
 

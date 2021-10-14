@@ -1,11 +1,9 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
+
+import categoriesReducer from "./categoriesReducer";
 
 const storeReducer = combineReducers({
-   categories: (state, action) => {
-      return {
-        all: [] 
-      }
-   }
+   categories: categoriesReducer
 })
 
 export default storeReducer

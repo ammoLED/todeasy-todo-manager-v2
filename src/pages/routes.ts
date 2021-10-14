@@ -1,12 +1,12 @@
-import NotFound      from './NotFound'
-import Categories    from './Categories'
-import CategoryTodos from './CategoryTodos'
+import NotFound      from "./NotFound"
+import Categories    from "./Categories"
+import CategoryTodos from "./CategoryTodos"
 
 
 // Endpoints
-export const CATEGORIES_ROUTE       = '/'
-export const CATEGORY_TODOS_ROUTE = '/:categoryTitle'
-export const NOT_FOUND_ROUTE      = ''
+export const CATEGORIES_ROUTE     = "/categories"
+export const CATEGORY_TODOS_ROUTE = "/categories/:categoryTitle"
+export const NOT_FOUND_ROUTE      = ""
 
 
 

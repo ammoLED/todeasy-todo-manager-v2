@@ -7,7 +7,10 @@ declare global {
     }
 }
 
-const store = createStore(storeReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore( 
+    storeReducer, 
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 export type StoreState = ReturnType<typeof store.getState>
 

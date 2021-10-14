@@ -1,7 +1,7 @@
-import React from 'react'
-import { Redirect } from 'react-router'
+import React from "react";
+import { Redirect } from "react-router";
 
-import { CATEGORIES_ROUTE } from './routes'
+import { CATEGORIES_ROUTE } from "./routes";
 
 const NotFound: React.FC = () => {
     return (

@@ -1,5 +1,6 @@
-import { TypedUseSelectorHook, useSelector,  } from 'react-redux'
-import { StoreState } from 'store'
+import { TypedUseSelectorHook, useSelector } from "react-redux";
+
+import { StoreState } from "store";
 
 const useTypedSelector: TypedUseSelectorHook<StoreState> = useSelector
 
