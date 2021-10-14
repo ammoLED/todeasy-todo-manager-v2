@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-const SectionsTodos = () => {
+const SectionsTodos: React.FC = () => {
 
-    const params = useParams()
+    const params = useParams<{sectionTitle: string}>()
 
     return (
         <div>

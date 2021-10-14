@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
-import sectionReducer from './sectionReducer'
-
 const storeReducer = combineReducers({
-   sections: sectionReducer
+   categories: (state, action) => {
+      return {
+        all: [] 
+      }
+   }
 })
 
 export default storeReducer
