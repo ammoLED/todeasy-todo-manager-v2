@@ -1,11 +1,11 @@
 import React from "react";
 import { Redirect } from "react-router";
 
-import { CATEGORIES_ROUTE } from "./routes";
+import { PROJECTS_ROUTE } from "./routes";
 
 const NotFound: React.FC = () => {
     return (
-        <Redirect to={CATEGORIES_ROUTE} />
+        <Redirect to={PROJECTS_ROUTE} />
     )
 }
 

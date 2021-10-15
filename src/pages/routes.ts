@@ -1,11 +1,12 @@
 import NotFound      from "./NotFound"
-import Categories    from "./Categories"
-import CategoryTodos from "./CategoryTodos"
+import Projects    from "./Projects"
+import ProjectTasks  from "./ProjectTasks"
 
 
 // Endpoints
-export const CATEGORIES_ROUTE     = "/categories"
-export const CATEGORY_TODOS_ROUTE = "/categories/:categoryTitle"
+export const DASHBOARD_ROUTE      = "/dashboard"
+export const PROJECTS_ROUTE       = "/projects"
+export const PROJECT_TASKS_ROUTE  = "/projects/:projectTitle"
 export const NOT_FOUND_ROUTE      = ""
 
 
@@ -18,12 +19,12 @@ interface IRoute {
 
 const routes: IRoute[] = [
    {
-      path: CATEGORIES_ROUTE,
-      Component: Categories
+      path: PROJECTS_ROUTE,
+      Component: Projects
    },
    {
-      path: CATEGORY_TODOS_ROUTE,
-      Component: CategoryTodos
+      path: PROJECT_TASKS_ROUTE,
+      Component: ProjectTasks
    },
    {
       path: NOT_FOUND_ROUTE,

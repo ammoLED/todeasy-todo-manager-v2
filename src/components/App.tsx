@@ -2,6 +2,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
+import './App.scss'
+
 import routes from "pages/routes";
 
 const App: React.FC = () => {

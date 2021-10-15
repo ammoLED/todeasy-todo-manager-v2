@@ -1,7 +1,7 @@
-export default interface Todo {
+export default interface Task {
     id: string
     title: string
     descr?: string
     completed: boolean
-    plannedTime: number
+    expiresAt: number
 }

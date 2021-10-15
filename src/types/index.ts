@@ -1,5 +1,5 @@
-import Todo from "./Todo";
-import Category from "./Category";
+import Task from "./Task";
+import Project from "./Project";
 import { ActionCreator } from "./Store";
 
-export type { Todo, Category, ActionCreator }
+export type { Task, Project, ActionCreator }
