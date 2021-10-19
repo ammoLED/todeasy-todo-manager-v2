@@ -1,5 +1,6 @@
 import NotFound      from "./NotFound"
-import Projects    from "./Projects"
+import Dashboard     from "./Dashboard"
+import Projects      from "./Projects"
 import ProjectTasks  from "./ProjectTasks"
 
 
@@ -18,6 +19,10 @@ interface IRoute {
 }
 
 const routes: IRoute[] = [
+   {
+      path: DASHBOARD_ROUTE,
+      Component: Dashboard
+   },
    {
       path: PROJECTS_ROUTE,
       Component: Projects

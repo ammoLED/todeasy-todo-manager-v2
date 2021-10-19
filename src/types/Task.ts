@@ -3,5 +3,6 @@ export default interface Task {
     title: string
     descr?: string
     completed: boolean
-    expiresAt: number
+    createdAt: number 
+    expiresAt?: number
 }

@@ -3,10 +3,11 @@ import React from "react";
 import { Task } from "types";
 
 export default interface Project {
-    img?: string | React.ReactElement
+    img?: string
     title: string // As ID
-    tasks: Task[]
     status: ProjectStatus
+    tasks: Task[]
+    createdAt: number
     expiresAt?: number
 }
 

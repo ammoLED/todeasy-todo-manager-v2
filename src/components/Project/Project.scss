@@ -1,0 +1,46 @@
+@import "styles/var";
+
+.project {
+    display: flex;
+    align-items: center;
+    width: #{"min(100%, 300px)"}; // ! https://github.com/sass/node-sass/issues/2815
+    background-color: $clr-fff;
+    padding: $distance-bellow-title; // This sounds wrong (padding: ...-title...) but it's look at design like this
+
+    &__img {
+        width: 35px;
+        height: 35px;
+        margin-right: $distance-bellow-title;
+        border-radius: 5px;
+        background-color: red;
+    }
+
+    &__values {
+        display: flex;
+        align-items: center;
+
+
+        // Gray Devider between values
+        &-value + &-value {
+            position: relative;
+            margin-left: 10px;
+
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: -6px;
+                transform: translateY(-50%);
+                width: 1px;
+                height: 80%;
+                background-color: $clr-brand-gray;
+            }
+        }
+    }
+
+    // Margin between projects
+    & + & {
+        margin-top: 10px;
+    }
+}

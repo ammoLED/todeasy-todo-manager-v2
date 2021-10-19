@@ -12,14 +12,29 @@ const initialState: ProjectsState = {
         {
             title: "Shopping",
             status: "open",
-            expiresAt: Date.now(),
+            createdAt: Date.now(),
             tasks: [
                 {
                     id: '1',
                     title: 'Buy niggers',
                     completed: false,
                     descr: 'Hate niggers',
-                    expiresAt: Date.now() + (1000 * 60 * 60)
+                    createdAt: Date.now()
+                }
+            ]
+        },
+        {
+            title: "Make Design",
+            status: "finished",
+            createdAt: Date.now(),
+            expiresAt: Date.now() + (1000 * 60 * 60),
+            tasks: [
+                {
+                    id: '1',
+                    title: 'Buy niggers',
+                    completed: true,
+                    descr: 'Hate niggers',
+                    createdAt: Date.now()
                 }
             ]
         }
