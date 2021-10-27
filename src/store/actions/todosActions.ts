@@ -1,62 +1,62 @@
-import { ActionCreator, Project, Task } from "types";
+import { ActionCreator, Category, Todo } from "types";
 
-export enum TasksActionTypes {
-    ADD_TASK    = 'ADD_TASK',
-    DELETE_TASK = 'DELETE_TASK',
-    SWITCH_TASK_COMPLETED = 'SWITCH_TASK_COMPLETED'
+export enum TodosActionTypes {
+    ADD_TODO    = 'ADD_TODO',
+    DELETE_TODO = 'DELETE_TODO',
+    SWITCH_TODO_COMPLETED = 'SWITCH_TODO_COMPLETED'
 }
 
 
-// ADD_TASK
-interface AddTaskAction {
-    type: TasksActionTypes.ADD_TASK
+// ADD_TODO
+interface AddTodoAction {
+    type: TodosActionTypes.ADD_TODO
     payload: { 
-        projectTitle: Project["title"]
-        task: Task 
+        categoryTitle: Category["title"]
+        todo: Todo 
     }
 }
 
-export const addTask: ActionCreator<AddTaskAction> = ({ projectTitle, task }) => ({
-    type: TasksActionTypes.ADD_TASK,
-    payload: { projectTitle, task }
+export const addTodo: ActionCreator<AddTodoAction> = ({ categoryTitle, todo }) => ({
+    type: TodosActionTypes.ADD_TODO,
+    payload: { categoryTitle, todo }
 })
-// /ADD_TASK
+// /ADD_TODO
 
 
-// DELETE_TASK
-interface DeleteTaskAction {
-    type: TasksActionTypes.DELETE_TASK,
+// DELETE_TODO
+interface DeleteTodoAction {
+    type: TodosActionTypes.DELETE_TODO,
     payload: {
-        projectTitle: Project["title"]
-        taskId: Task["id"]
+        categoryTitle: Category["title"]
+        todoId: Todo["id"]
     }
 }
 
-export const deleteTask: ActionCreator<DeleteTaskAction> = ({ projectTitle, taskId }) => ({
-    type: TasksActionTypes.DELETE_TASK,
-    payload: { projectTitle, taskId }
+export const deleteTodo: ActionCreator<DeleteTodoAction> = ({ categoryTitle, todoId }) => ({
+    type: TodosActionTypes.DELETE_TODO,
+    payload: { categoryTitle, todoId }
 })
-// /DELETE_TASK
+// /DELETE_TODO
 
 
-// SWITCH_TASK_COMPLETED
-interface SwitchTaskCompletedAction {
-    type: TasksActionTypes.SWITCH_TASK_COMPLETED,
+// SWITCH_TODO_COMPLETED
+interface SwitchTodoCompletedAction {
+    type: TodosActionTypes.SWITCH_TODO_COMPLETED,
     payload: { 
-        projectTitle: Project["title"]
-        taskId: Task["id"]
+        categoryTitle: Category["title"]
+        todoId: Todo["id"]
     }
 }
 
-export const switchTaskCompleted: ActionCreator<SwitchTaskCompletedAction> = ({ projectTitle, taskId }) => ({
-    type: TasksActionTypes.SWITCH_TASK_COMPLETED,
-    payload: { projectTitle, taskId }
+export const switchTodoCompleted: ActionCreator<SwitchTodoCompletedAction> = ({ categoryTitle, todoId }) => ({
+    type: TodosActionTypes.SWITCH_TODO_COMPLETED,
+    payload: { categoryTitle, todoId }
 })
-// /SWITCH_TASK_COMPLETED
+// /SWITCH_TODO_COMPLETED
 
 
-export type TasksAction = 
-    AddTaskAction 
-    | DeleteTaskAction 
-    | SwitchTaskCompletedAction 
+export type TodosAction = 
+    AddTodoAction 
+    | DeleteTodoAction 
+    | SwitchTodoCompletedAction 
 

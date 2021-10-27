@@ -1,8 +1,7 @@
-export default interface Task {
+export default interface Todo {
     id: string
     title: string
-    descr?: string
+    description?: string
     completed: boolean
-    createdAt: number 
     expiresAt?: number
 }

@@ -1,31 +1,38 @@
-@import 'styles/var';
+@import "styles/variables";
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: $clr-brand-white;
 }
 
-a {
-  color: $clr-brand-black; 
-  text-decoration: none;
+a {text-decoration: none; color: inherit}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
 }
 
-h1, h2, h3, h4, h5 {color: $clr-brand-black; margin: 0;}
-
-h1 {font-size: $fz-primary;} // 25px
-h2 {font-size: $fz-secondary;}  // 14
-h3 {font-size: $fz-tertiary;} // 10 
-p  {font-size: $fz-last;} // 8 
+h1 {font-size: clamp(1.5rem, 10vw, 3rem);} // 25px
+h2 {font-size: 1rem;}  // 14
+h3 {font-size: .8rem;} // 11 
+p  {font-size: .7rem;} // 8 
 
 
 // Helper Classes
 .container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+@media (max-width: 350px) {
+  .container {
+    max-width: 100%;
+    padding: 0 .5rem;
+  }
 }
 
 div[class$="-img"], div[class$="__img"] {
@@ -40,28 +47,4 @@ div[class$="-img"], div[class$="__img"] {
     height: 100%;
     object-fit: cover;
   }
-}
-
-.text-accent {
-  &_primary    {font-size: $fz-primary;} 
-  &_secondary  {font-size: $fz-secondary;} // 14  
-  &_tertiary   {font-size: $fz-tertiary;}// 10  
-  &_last       {font-size: $fz-last;} // 8  
-}
-
-.text-color {
-  &_red   {color: $clr-brand-red;}
-  &_blue  {color: $clr-brand-blue;}
-  &_white {color: $clr-brand-white;}
-  &_gray  {color: $clr-brand-gray;}
-  &_gray-dark {color: $clr-brand-gray-dark;}
-  &_black {color: $clr-brand-black;}
-}
-
-.background-color {
-  &_red   {background-color: $clr-brand-red;}
-  &_blue  {background-color: $clr-brand-blue;}
-  &_white {background-color: $clr-brand-white;}
-  &_gray  {background-color: $clr-brand-gray;}
-  &_black {background-color: $clr-brand-black;}
 }

@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 
-import projectsReducer from "./projectsReducer";
+import appReducer from "./appReducer";
+import categoriesReducer from "./categoriesReducer";
 
 const storeReducer = combineReducers({
-   projects: projectsReducer
+   app: appReducer,
+   categories: categoriesReducer
 })
 
 export default storeReducer

@@ -1,6 +1,5 @@
-import Task from "./Task";
-import Project from "./Project";
+import Todo from "./Todo";
+import Category from "./Category";
 import { ActionCreator } from "./Store";
-import { TextAccent, TextColor } from "./Text";
 
-export type { Task, Project, ActionCreator, TextAccent, TextColor }
+export type { Todo, Category, ActionCreator }

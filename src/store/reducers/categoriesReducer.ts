@@ -1,40 +1,35 @@
-import { Project } from "types";
-
-import { ProjectsActionTypes, ProjectsAction } from "store/actions/projectsActions";
+import { Category } from "types";
+import { CategoriesActionTypes, CategoriesAction } from "store/actions/categoriesActions";
 // import { TodosActionTypes, TodosAction } from "store/actions/todosActions";
 
-interface ProjectsState {
-    all: Project[]
+
+interface CategoriesState {
+    all: Category[]
 }
 
-const initialState: ProjectsState = {
+const initialState: CategoriesState = {
     all: [
         {
             title: "Shopping",
-            status: "open",
-            createdAt: Date.now(),
-            tasks: [
+            todos: [
                 {
                     id: '1',
                     title: 'Buy niggers',
                     completed: false,
-                    descr: 'Hate niggers',
-                    createdAt: Date.now()
+                    description: 'Hate niggers',
+                    expiresAt: Date.now() + (1000 * 60 * 60 * 3)
                 }
             ]
         },
         {
-            title: "Make Design",
-            status: "finished",
-            createdAt: Date.now(),
-            expiresAt: Date.now() + (1000 * 60 * 60),
-            tasks: [
+            title: "Health",
+            todos: [
                 {
                     id: '1',
-                    title: 'Buy niggers',
+                    title: 'Kill niggers',
                     completed: true,
-                    descr: 'Hate niggers',
-                    createdAt: Date.now()
+                    description: 'Hate niggers',
+                    expiresAt: Date.now() + (1000 * 60 * 60 * 5)
                 }
             ]
         }
@@ -42,20 +37,20 @@ const initialState: ProjectsState = {
 }
 
 
-const projectsReducer = (state = initialState, action: ProjectsAction): ProjectsState => {
+const categoriesReducer = (state = initialState, action: CategoriesAction): CategoriesState => {
     switch(action.type) {
-        case ProjectsActionTypes.ADD_PROJECT: {
+        case CategoriesActionTypes.ADD_CATEGORY: {
 
             return {
                 all: [
-                    action.payload.project,
+                    action.payload.category,
                     ...state.all
                 ]
             }
 
         }
 
-        case ProjectsActionTypes.DELETE_PROJECT: {
+        case CategoriesActionTypes.DELETE_CATEGORY: {
 
             // Last ELem
             if (state.all.length === 1) {
@@ -64,7 +59,7 @@ const projectsReducer = (state = initialState, action: ProjectsAction): Projects
                 }
             }
 
-            const idx = state.all.findIndex(cat => cat.title === action.payload.title)
+            const idx = state.all.findIndex(category => category.title === action.payload.title)
 
             return {
                 all: [
@@ -147,4 +142,4 @@ const projectsReducer = (state = initialState, action: ProjectsAction): Projects
     }
 }
 
-export default projectsReducer
+export default categoriesReducer
