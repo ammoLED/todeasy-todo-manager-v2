@@ -1,0 +1,29 @@
+.today-progress {
+    --canvas-size: 4rem;
+
+    position: relative;
+    height: var(--canvas-size);
+    width:  var(--canvas-size);
+
+    &__circle {
+        height: 100%;
+        width: 100%;
+
+        circle {
+            fill: transparent;
+            stroke:#D95FF7;
+            stroke-width: 0.25rem;
+            cx: calc(var(--canvas-size) / 2);
+            cy: calc(var(--canvas-size) / 2); 
+            r: calc((var(--canvas-size) / 2) - 0.25rem); // Radius = (canvas-size / 2) - stroke-width
+        }
+    }
+
+    &__percent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: calc(var(--canvas-size) / 4.5);
+    }
+}

@@ -13,10 +13,10 @@ const initialState: CategoriesState = {
             title: "Shopping",
             todos: [
                 {
-                    id: '1',
-                    title: 'Buy niggers',
+                    id: "1",
+                    title: "Buy niggers",
                     completed: false,
-                    description: 'Hate niggers',
+                    description: "Hate niggers",
                     expiresAt: Date.now() + (1000 * 60 * 60 * 3)
                 }
             ]
@@ -25,11 +25,30 @@ const initialState: CategoriesState = {
             title: "Health",
             todos: [
                 {
-                    id: '1',
-                    title: 'Kill niggers',
+                    id: "1",
+                    title: "Kill niggers",
                     completed: true,
-                    description: 'Hate niggers',
+                    description: "Hate niggers",
                     expiresAt: Date.now() + (1000 * 60 * 60 * 5)
+                },
+                {
+                    id: "3",
+                    title: "Always Here",
+                    completed: true,
+                    description: "Hate niggers",
+                    expiresAt: Date.now()
+                },
+            ]
+        },
+        {
+            title: "Food",
+            todos: [
+                {
+                    id: "1",
+                    title: "I love to eat",
+                    completed: true,
+                    description: "Hate niggers",
+                    expiresAt: Date.now() + (1000 * 60 * 60 * 3)
                 }
             ]
         }

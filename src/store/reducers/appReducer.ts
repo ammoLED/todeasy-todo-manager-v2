@@ -5,7 +5,7 @@ interface AppState {
 }
 
 const initialState: AppState = {
-    currentPageName: "TEST"
+    currentPageName: ""
 }
 
 const appReducer = (state = initialState, action: AppAction): AppState => {

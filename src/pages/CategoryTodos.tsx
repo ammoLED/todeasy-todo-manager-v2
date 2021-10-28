@@ -22,11 +22,11 @@ const CategoryTodos: React.FC = () => {
     })
     
     return (
-        <div className="category-todos">
+        <section className="category-todos">
             {currentCategory && currentCategory.todos.map(todo => {
-                return <Todo todo={todo} />
+                return <Todo todo={todo} key={todo.id} />
             })}
-        </div>
+        </section>
     )
 }
 

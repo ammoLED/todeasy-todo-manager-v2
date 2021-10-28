@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import { useTypedSelector } from "hooks";
 import { CATEGORIES_ROUTE } from "pages/routes";
+import TodayProgress from "components/TodayProgress";
 
 const Header: React.FC = () => {
 
@@ -16,6 +17,7 @@ const Header: React.FC = () => {
         <header className="header">
             {buttonBack}
             <h1> {currentPageName} </h1>
+            <TodayProgress/>
         </header>
     )
 }

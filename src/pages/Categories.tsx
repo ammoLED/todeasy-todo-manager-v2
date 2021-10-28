@@ -15,11 +15,11 @@ const Categories: React.FC = () => {
     })
 
     return (
-        <div className="categories-list">
+        <section className="categories-list">
             {categories.map(category => {
                 return <Category category={category} key={category.title} />
             })}
-        </div>
+        </section>
     )
 }
 
