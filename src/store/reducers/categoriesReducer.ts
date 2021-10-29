@@ -27,15 +27,15 @@ const initialState: CategoriesState = {
                 {
                     id: "1",
                     title: "Kill niggers",
-                    completed: true,
+                    completed: false,
                     description: "Hate niggers",
-                    expiresAt: Date.now() + (1000 * 60 * 60 * 5)
+                    expiresAt: Date.now()
                 },
                 {
                     id: "3",
                     title: "Always Here",
                     completed: true,
-                    description: "Hate niggers",
+                    description: "Always Here",
                     expiresAt: Date.now()
                 },
             ]

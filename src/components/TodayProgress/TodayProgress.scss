@@ -1,5 +1,7 @@
+@import "styles/variables";
+
 .today-progress {
-    --canvas-size: 4rem;
+    --canvas-size: 4.5rem;
 
     position: relative;
     height: var(--canvas-size);
@@ -9,13 +11,26 @@
         height: 100%;
         width: 100%;
 
-        circle {
+        &-layout, &-progress {
             fill: transparent;
-            stroke:#D95FF7;
             stroke-width: 0.25rem;
             cx: calc(var(--canvas-size) / 2);
             cy: calc(var(--canvas-size) / 2); 
             r: calc((var(--canvas-size) / 2) - 0.25rem); // Radius = (canvas-size / 2) - stroke-width
+        }
+
+        // Progress background
+        &-layout {
+            stroke: $clr-brand-blue;
+        }
+
+        // This part will fill with color
+        &-progress {
+            stroke:#D95FF7;
+
+            // Start at 12 O'Clock
+            transform-origin: center;
+            transform: rotate(-90deg);
         }
     }
 
@@ -25,5 +40,15 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: calc(var(--canvas-size) / 4.5);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .today-progress {
+        --canvas-size: 3.5rem;
+
+        &__circle-layout, &__circle-progress {
+            stroke-width: 0.18rem;
+        }
     }
 }
