@@ -1,24 +1,23 @@
 import React, { useEffect } from "react"
 import { useDispatch } from "react-redux"
 
-import Category from "components/Category"
-import { useTypedSelector } from "hooks"
+import Section from "components/Section"
 import { changePageName } from "store/actions/appActions"
+import CategoryList from "components/CategoryList"
 
 const Categories: React.FC = () => {
 
     const dispatch = useDispatch()
-    const categories = useTypedSelector(state => state.categories.all)
 
     useEffect(() => {
         dispatch(changePageName({ currentPageName: "Categories" }))
-    })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
-        <section className="categories-list">
-            {categories.map(category => {
-                return <Category category={category} key={category.title} />
-            })}
+        <section>
+            <CategoryList/>
         </section>
     )
 }

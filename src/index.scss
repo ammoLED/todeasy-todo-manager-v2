@@ -28,23 +28,33 @@ p  {font-size: .7rem;} // 8
   margin: 0 auto;
 }
 
-@media (max-width: 350px) {
+@media only screen and (max-width: 930px) {
   .container {
     max-width: 100%;
-    padding: 0 .5rem;
+    padding: 0 2rem;
   }
 }
 
-div[class$="-img"], div[class$="__img"] {
-  /*
+.ico {
+  font-size: 2.1rem;
+
+  &_small {
+    font-size: 1.6rem;
+  }
+}
+
+
+/*
     For parent classses such as "insecure-img"
     or child classes for example "project__img"
   */
-  overflow: hidden;
+// div[class$="-img"], div[class$="__img"] {
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
+//   overflow: hidden;
+
+//   img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
+// }

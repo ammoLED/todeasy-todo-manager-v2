@@ -3,4 +3,6 @@ interface Action {
     payload?: object
 }
 
-export type ActionCreator<T extends Action> = (payload: T["payload"]) => T
+type ActionCreator<T extends Action> = (payload: T["payload"]) => T
+
+export default ActionCreator

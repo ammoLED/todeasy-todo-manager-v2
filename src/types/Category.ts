@@ -1,7 +1,8 @@
-import { Todo } from "types";
+import { Gradient, Todo } from "types";
 
 export default interface Category {
-    img?: string
+    ico?: string
     title: string // As ID
     todos: Todo[]
+    gradient?: Gradient
 }

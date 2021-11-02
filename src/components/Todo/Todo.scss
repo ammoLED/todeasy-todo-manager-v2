@@ -1,0 +1,46 @@
+@import "styles/variables";
+
+.todo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: $border-radius;
+    width: 400px;
+
+    &__ico {
+        margin-right: 15px;
+    }
+
+    &__description {
+        margin-bottom: 5px;
+    }
+
+    &__interact {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            outline: none;
+            border-radius: 100%;
+            height: 35px;
+            width: 35px;
+        }
+
+        &-delete {
+            transform: rotateY(-180deg);
+        }
+    }
+}
+
+@media only screen and (max-width: 521px) {
+    .todo {
+        width: 90%;
+    }
+}

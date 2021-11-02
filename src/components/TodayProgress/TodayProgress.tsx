@@ -24,7 +24,7 @@ const TodayProgress: React.FC = () => {
         return () => {
             window.removeEventListener("resize", updateProgressLength)
         }        
-    })
+    }, [])
 
     function updateProgressLength() {
         /*

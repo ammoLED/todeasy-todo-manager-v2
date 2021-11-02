@@ -1,7 +1,7 @@
 @import "styles/variables";
 
 .today-progress {
-    --canvas-size: 4.5rem;
+    --canvas-size: clamp(3rem, 13vw, 5rem);
 
     position: relative;
     height: var(--canvas-size);
@@ -43,12 +43,12 @@
     }
 }
 
-@media screen and (max-width: 400px) {
-    .today-progress {
-        --canvas-size: 3.5rem;
+// @media screen and (max-width: 400px) {
+//     .today-progress {
+//         --canvas-size: 3.5rem;
 
-        &__circle-layout, &__circle-progress {
-            stroke-width: 0.18rem;
-        }
-    }
-}
+//         &__circle-layout, &__circle-progress {
+//             stroke-width: 0.18rem;
+//         }
+//     }
+// }

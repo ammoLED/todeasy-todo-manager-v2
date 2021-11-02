@@ -3,7 +3,7 @@ import { ActionCreator, Category, Todo } from "types";
 export enum TodosActionTypes {
     ADD_TODO    = 'ADD_TODO',
     DELETE_TODO = 'DELETE_TODO',
-    SWITCH_TODO_COMPLETED = 'SWITCH_TODO_COMPLETED'
+    SET_TODO_COMPLETED = 'SET_TODO_COMPLETED'
 }
 
 
@@ -39,24 +39,23 @@ export const deleteTodo: ActionCreator<DeleteTodoAction> = ({ categoryTitle, tod
 // /DELETE_TODO
 
 
-// SWITCH_TODO_COMPLETED
-interface SwitchTodoCompletedAction {
-    type: TodosActionTypes.SWITCH_TODO_COMPLETED,
+// SET_TODO_COMPLETED
+interface SetTodoCompleted {
+    type: TodosActionTypes.SET_TODO_COMPLETED,
     payload: { 
         categoryTitle: Category["title"]
         todoId: Todo["id"]
     }
 }
 
-export const switchTodoCompleted: ActionCreator<SwitchTodoCompletedAction> = ({ categoryTitle, todoId }) => ({
-    type: TodosActionTypes.SWITCH_TODO_COMPLETED,
+export const setTodoCompleted: ActionCreator<SetTodoCompleted> = ({ categoryTitle, todoId }) => ({
+    type: TodosActionTypes.SET_TODO_COMPLETED,
     payload: { categoryTitle, todoId }
 })
-// /SWITCH_TODO_COMPLETED
+// /SET_TODO_COMPLETED
 
 
 export type TodosAction = 
     AddTodoAction 
     | DeleteTodoAction 
-    | SwitchTodoCompletedAction 
-
+    | SetTodoCompleted 
