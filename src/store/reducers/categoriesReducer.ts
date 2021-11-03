@@ -64,7 +64,7 @@ const initialState: CategoriesState = {
                 {
                     id: "1",
                     title: "I love to eat",
-                    completed: true,
+                    completed: false,
                     description: "Hate niggers",
                     expiresAt: Date.now() + (1000 * 60 * 60 * 3)
                 }
@@ -196,7 +196,7 @@ const categoriesReducer = (state = initialState, action: CategoriesAction | Todo
             newArr[categoryIdx] = {
                 ...newArr[categoryIdx],
 
-                todos: newArr[categoryIdx].todos.filter(todo => {
+                todos: newArr[categoryIdx].todos.map(todo => {
                     if (todo.id === action.payload.todoId) {
                         return {
                             ...todo,
@@ -207,6 +207,8 @@ const categoriesReducer = (state = initialState, action: CategoriesAction | Todo
                     return todo
                 })
             }
+
+            console.log(newArr)
 
             return {
                 all: newArr

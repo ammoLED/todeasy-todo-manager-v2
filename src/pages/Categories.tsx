@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch } from "react-redux"
 
-import Section from "components/Section"
 import { changePageName } from "store/actions/appActions"
 import CategoryList from "components/CategoryList"
 

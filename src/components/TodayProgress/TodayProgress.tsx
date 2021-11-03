@@ -63,7 +63,7 @@ const TodayProgress: React.FC = () => {
             </svg>
 
             <p className="today-progress__percent">
-                {completedPercent}%
+                {Math.floor(completedPercent)}%
             </p>
         </div>
     )

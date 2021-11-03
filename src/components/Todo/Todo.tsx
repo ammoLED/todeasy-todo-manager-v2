@@ -1,41 +1,104 @@
-import React from "react"
-import { useParams } from "react-router"
+import React, { useRef } from "react"
 import { useDispatch } from "react-redux"
 import moment from "moment"
 
 import "./Todo.scss"
-import { ReactComponent as SVGComplete } from "assets/svg/Complete.svg"
 import { Todo as ITodo } from "types"
-import { setTodoCompleted } from "store/actions/todosActions"
+import { deleteTodo, setTodoCompleted } from "store/actions/todosActions"
 
 interface Props {
     todo: ITodo
+    categoryTitle: string
     categoryIco?: string
 }
 
-const Todo: React.FC<Props> = ({ todo, categoryIco }) => {    
-   
-    const params = useParams<{categoryTitle: string}>()
+const offsetDifficulty = 1
+
+const Todo: React.FC<Props> = ({ todo, categoryIco, categoryTitle }) => {    
+
     const dispatch = useDispatch()
+    // Refs for swipe (We don't need to rerender Component every time)
+    const target        = useRef<HTMLDivElement>(null)
+    const startX        = useRef<number>(0)
+    const offset        = useRef<number>(0)
+    const isPointerDown = useRef<boolean>(false)
 
-    const styles = {
-        background: `linear-gradient(
-            135deg, ${todo.gradient?.startColor || "#fff"} 0%, 
-            ${todo.gradient?.endColor || "#3423"} 100%
-        )`
+    function makeDecision() {
+        if (offset.current < -20) {
+            // Swiped to Left
+            
+            dispatch(deleteTodo({
+                categoryTitle,
+                todoId: todo.id
+            }))            
+        }
+        else if (offset.current > 20) {
+            // Swiped to Right
+            
+            if (!todo.completed) {
+                dispatch(setTodoCompleted({
+                    categoryTitle,
+                    todoId: todo.id
+                }))
+            }
+        }
     }
 
-    function onSetTodoCompleted() {
-        dispatch(setTodoCompleted({
-            categoryTitle: params.categoryTitle,
-            todoId: todo.id
-        }))
+
+    function handlePointerDown(e: React.PointerEvent) {
+
+        if (target.current) {
+
+            startX.current        = e.pageX
+            isPointerDown.current = true
+
+            target.current.style.cursor = "grabbing"
+
+        }
+
     }
+
+    function handlePointerMove(e: React.PointerEvent) {
+
+        if (target.current && isPointerDown.current) {
+
+            offset.current = (e.pageX - startX.current) / offsetDifficulty
+
+            target.current.style.transform = `translateX(${offset.current}px)`
+
+        }
+
+    }
+
+    function handlePointerGone(e: React.PointerEvent) {
+
+        if (target.current) {
+            makeDecision() // Complete or Delete Todo
+
+            isPointerDown.current = false
+
+            target.current.style.cursor    = "unset"
+            target.current.style.transform = "translateX(0px)"
+        }
+
+    }
+
+    console.log(`RENDERED: Todo "${todo.title}"`)
 
     return (
         <div 
+            ref={target}
             className={`todo ${todo.completed ? "todo_completed" : ""}`}
-            style={styles} 
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerGone}
+            onPointerLeave={handlePointerGone}
+            style={{
+                background: `linear-gradient(
+                    135deg, ${todo.gradient?.startColor || "#fff"} 0%, 
+                    ${todo.gradient?.endColor || "#3423"} 100%
+                )`
+            }} 
         >
             <div className="todo__ico ico_small">
                 <i className={`fa fa-${categoryIco}`}/>
@@ -45,12 +108,6 @@ const Todo: React.FC<Props> = ({ todo, categoryIco }) => {
                 <h2 className="todo__title">{todo.title}</h2>
                 <p className="todo__description">{todo.description}</p>
                 <p>{moment(todo.expiresAt).format("DD MMM [-] hh:mm A")}</p>
-            </div>
-
-            <div className="todo__interact">
-                <button onClick={onSetTodoCompleted}>
-                    <SVGComplete/>
-                </button>
             </div>
         </div>
     )
