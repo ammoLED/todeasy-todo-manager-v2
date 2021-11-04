@@ -9,7 +9,11 @@
     border-radius: $border-radius;
     user-select: none;
     touch-action: none; // To prevent wrong behavior with touches
-    transition: .3s transform ease-out;
+    transition: .3s all ease-out;
+
+    &_completed {
+        opacity: .5;
+    }
 
     &__ico {
         margin-right: 15px;
@@ -29,11 +33,19 @@
 
 @keyframes todo-exit {
     0% {
-        transform: inherit;
-        opacity: 1;
+        transform: translateX(-150px);
+        
+        .todo {
+            opacity: 1;
+        }
+
+        .todo.todo_completed {
+            opacity: .5;
+        }
+
     }
     100% {
-        transform: translate(-100%);
+        transform: translateX(-300px);
         opacity: 0;
     }
 }

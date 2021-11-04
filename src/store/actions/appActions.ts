@@ -1,19 +1,19 @@
 import { ActionCreator } from "types";
 
 export enum AppActionTypes {
-    CHANGE_PAGE_NAME = "CHANGE_PAGE_NAME"
+    SET_PAGE_NAME = "SET_PAGE_NAME"
 }
 
-interface ChangePageNameAction {
-    type: AppActionTypes.CHANGE_PAGE_NAME,
+interface SetPageName {
+    type: AppActionTypes.SET_PAGE_NAME,
     payload: {
-        currentPageName: string
+        pageName: string
     }
 }
 
-export const changePageName: ActionCreator<ChangePageNameAction> = ({ currentPageName }) => ({
-    type: AppActionTypes.CHANGE_PAGE_NAME,
-    payload: { currentPageName }
+export const setPageName: ActionCreator<SetPageName> = ({ pageName }) => ({
+    type: AppActionTypes.SET_PAGE_NAME,
+    payload: { pageName }
 })
 
-export type AppAction = ChangePageNameAction
+export type AppAction = SetPageName

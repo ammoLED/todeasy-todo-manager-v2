@@ -1,6 +1,6 @@
-import "./TodayProgress.scss";
 import React, { useState, useEffect, useRef } from "react";
 
+import "./CategoryProgress.scss";
 import { useTodayTodos } from "hooks";
 
 interface CSSStyleDeclarationWithR extends CSSStyleDeclaration {
@@ -37,23 +37,23 @@ const TodayProgress: React.FC = () => {
             P.S. I dont know if it's good solution, would be glad if you said me :)
         */
         const progressComputedStyles = window.getComputedStyle(progressRef.current) as CSSStyleDeclarationWithR
-        const progressRadius         = +progressComputedStyles.r.replace(/px/, '')
+        const radius                 = parseInt(progressComputedStyles.r.replace(/px/, ''), 10)
 
-        setProgressLength( 2 * Math.PI * progressRadius )        
+        setProgressLength( 2 * Math.PI * radius )        
     }
 
     return (
-        <div className="today-progress">
-            <svg className="today-progress__circle">
+        <div className="category-progress">
+            <svg className="category-progress__circle">
                 <circle 
-                    className="today-progress__circle-layout"
+                    className="category-progress__circle-layout"
                     style={{
                         strokeDasharray:  `${progressLength} ${progressLength}`,
                     }}
                 />
 
                 <circle 
-                    className="today-progress__circle-progress"
+                    className="category-progress__circle-progress"
                     ref={progressRef} 
                     style={{
                         strokeDasharray:  `${progressLength} ${progressLength}`,
@@ -62,7 +62,7 @@ const TodayProgress: React.FC = () => {
                 />
             </svg>
 
-            <p className="today-progress__percent">
+            <p className="category-progress__percent">
                 {Math.floor(completedPercent)}%
             </p>
         </div>

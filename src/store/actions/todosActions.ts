@@ -1,9 +1,9 @@
 import { ActionCreator, Category, Todo } from "types";
 
 export enum TodosActionTypes {
-    ADD_TODO    = 'ADD_TODO',
-    DELETE_TODO = 'DELETE_TODO',
-    SET_TODO_COMPLETED = 'SET_TODO_COMPLETED'
+    ADD_TODO    = "ADD_TODO",
+    DELETE_TODO = "DELETE_TODO",
+    SET_TODO_COMPLETED = "SET_TODO_COMPLETED"
 }
 
 

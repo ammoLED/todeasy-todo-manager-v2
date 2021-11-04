@@ -24,8 +24,8 @@
 }
 
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 340px) {
     .category-list {
-        grid-template-columns: repeat(1, 120px);
+        grid-template-columns: repeat(1, 1fr);
     }
 }

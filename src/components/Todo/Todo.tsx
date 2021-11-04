@@ -12,8 +12,6 @@ interface Props {
     categoryIco?: string
 }
 
-const offsetDifficulty = 1
-
 const Todo: React.FC<Props> = ({ todo, categoryIco, categoryTitle }) => {    
 
     const dispatch = useDispatch()
@@ -24,7 +22,7 @@ const Todo: React.FC<Props> = ({ todo, categoryIco, categoryTitle }) => {
     const isPointerDown = useRef<boolean>(false)
 
     function makeDecision() {
-        if (offset.current < -20) {
+        if (offset.current < -150) {
             // Swiped to Left
             
             dispatch(deleteTodo({
@@ -32,7 +30,7 @@ const Todo: React.FC<Props> = ({ todo, categoryIco, categoryTitle }) => {
                 todoId: todo.id
             }))            
         }
-        else if (offset.current > 20) {
+        else if (offset.current > 150) {
             // Swiped to Right
             
             if (!todo.completed) {
@@ -62,7 +60,7 @@ const Todo: React.FC<Props> = ({ todo, categoryIco, categoryTitle }) => {
 
         if (target.current && isPointerDown.current) {
 
-            offset.current = (e.pageX - startX.current) / offsetDifficulty
+            offset.current = e.pageX - startX.current
 
             target.current.style.transform = `translateX(${offset.current}px)`
 
@@ -70,15 +68,15 @@ const Todo: React.FC<Props> = ({ todo, categoryIco, categoryTitle }) => {
 
     }
 
-    function handlePointerGone(e: React.PointerEvent) {
+    function handlePointerGone() {
 
         if (target.current) {
-            makeDecision() // Complete or Delete Todo
 
             isPointerDown.current = false
 
             target.current.style.cursor    = "unset"
             target.current.style.transform = "translateX(0px)"
+            makeDecision()
         }
 
     }

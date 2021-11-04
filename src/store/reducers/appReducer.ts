@@ -2,12 +2,12 @@ import { AppActionTypes, AppAction } from "store/actions/appActions"
 import { Gradient } from "types"
 
 interface AppState {
-    currentPageName: string
+    pageName: string
     customGradients: Gradient[] // User can delete exists gradients and create own, should to store these states
 }
 
 const initialState: AppState = {
-    currentPageName: "",
+    pageName: "",
     customGradients: [
         {
             id: "Default Orange",
@@ -39,10 +39,10 @@ const initialState: AppState = {
 
 const appReducer = (state = initialState, action: AppAction): AppState => {
     switch (action.type) {
-        case AppActionTypes.CHANGE_PAGE_NAME: {
+        case AppActionTypes.SET_PAGE_NAME: {
             return {
                 ...state,
-                currentPageName: action.payload.currentPageName
+                pageName: action.payload.pageName
             }
         }
 

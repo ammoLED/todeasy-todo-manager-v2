@@ -4,20 +4,20 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import { useTypedSelector } from "hooks";
 import { CATEGORIES_ROUTE } from "pages/routes";
-import TodayProgress from "components/TodayProgress";
+import CategoryProgress from "components/CategoryProgress";
 
 const Header: React.FC = () => {
 
     const location = useLocation()
-    const { currentPageName } = useTypedSelector(state => state.app)
+    const { pageName } = useTypedSelector(state => state.app)
 
     const buttonBack = (location.pathname !== CATEGORIES_ROUTE) ? <ButtonBack/> : null
 
     return (
         <header className="header">
             {buttonBack}
-            <h1> {currentPageName} </h1>
-            <TodayProgress/>
+            <h1> {pageName} </h1>
+            <CategoryProgress />
         </header>
     )
 }
