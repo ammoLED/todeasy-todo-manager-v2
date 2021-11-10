@@ -1,0 +1,16 @@
+@import "styles/variables";
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: $modal-zIndex;
+    backdrop-filter: blur(20px);
+    
+    &__content {
+        margin: 0 auto;
+        width: 200px;
+    }
+}

@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import "./CategoryProgress.scss";
-import { useTodayTodos } from "hooks";
+import { useTodayTasks } from "hooks";
 
 interface CSSStyleDeclarationWithR extends CSSStyleDeclaration {
     r: string;
 }
 
-const TodayProgress: React.FC = () => {
+const CategoryProgress: React.FC = () => {
 
     const [ progressLength, setProgressLength ] = useState(0)
     const progressRef = useRef() as React.MutableRefObject<SVGCircleElement> 
-    const todosToday  = useTodayTodos()
+    const todosToday  = useTodayTasks()
 
     const completedPercent = todosToday.filter(todo => todo.completed).length / todosToday.length * 100 
     const offset           = progressLength - completedPercent / 100 * progressLength
@@ -29,7 +29,7 @@ const TodayProgress: React.FC = () => {
     function updateProgressLength() {
         /*
             !WARNING:
-            Hook will get current value of "r" then set it on TodayProgress variable scope.
+            Hook will get current value of "r" then set it on CategoryProgress variable scope.
             This is my solution to problem with adaptation of progress circle (changing SVG width / hight).
             So on CSS media queries you can change just one variable (--canvas-size)
             but script that calculates progressLength will stay OK as well as visual part of circle
@@ -69,4 +69,4 @@ const TodayProgress: React.FC = () => {
     )
 }
 
-export default TodayProgress
+export default CategoryProgress

@@ -1,0 +1,18 @@
+@import "styles/variables";
+
+.task-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 25rem;
+    border: 1px dashed $clr-text-primary;
+    border-radius: $border-radius;
+    cursor: pointer;
+    user-select: none;
+    transition: .3s all ease-out;
+
+    i {
+        font-size: 25px;
+    }
+}

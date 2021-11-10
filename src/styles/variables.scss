@@ -2,9 +2,12 @@
 $clr-brand-blue:      #1F243A;
 $clr-brand-blue-dark: #16192A; 
 $clr-brand-pink:      #D95FF7;
-$clr-brand-white:     #FFF;
+$clr-text-primary:     #FFF;
 
 $border-radius: 5px;
 
 // Margins / Paddings
 $distance-between-sections: 25px;
+
+// Z-index
+$modal-zIndex: 9999;

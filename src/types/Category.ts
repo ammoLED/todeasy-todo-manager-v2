@@ -1,8 +1,8 @@
-import { Gradient, Todo } from "types";
+import { Gradient, Task } from "types";
 
 export default interface Category {
     ico?: string
     title: string // As ID
-    todos: Todo[]
+    tasks: Task[]
     gradient?: Gradient
 }

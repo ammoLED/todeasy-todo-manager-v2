@@ -1,10 +1,11 @@
 import "./Header.scss";
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { useTypedSelector } from "hooks";
 import { CATEGORIES_ROUTE } from "pages/routes";
 import CategoryProgress from "components/CategoryProgress";
+import ButtonBack from "components/ButtonBack";
 
 const Header: React.FC = () => {
 
@@ -19,15 +20,6 @@ const Header: React.FC = () => {
             <h1> {pageName} </h1>
             <CategoryProgress />
         </header>
-    )
-}
-
-const ButtonBack = () => {
-
-    const history = useHistory()
-
-    return (
-        <button onClick={history.goBack}>BACK</button>
     )
 }
 

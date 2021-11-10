@@ -1,5 +1,9 @@
 @import "styles/variables";
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -7,7 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $clr-brand-white;
+  color: $clr-text-primary;
 }
 
 a {text-decoration: none; color: inherit}
@@ -17,9 +21,6 @@ h1, h2, h3, h4, h5, p {
 }
 
 h1 {font-size: clamp(1.5rem, 10vw, 3rem);} // 25px
-h2 {font-size: 1rem;}  // 14
-h3 {font-size: .8rem;} // 11 
-p  {font-size: .7rem;} // 8 
 
 
 // Helper Classes
@@ -43,6 +44,23 @@ p  {font-size: .7rem;} // 8
   }
 }
 
+.btn {
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+// Font-sizes
+.item {
+  &-title {
+    font-size: 1rem;
+  }
+  &-description {
+    font-size: .8rem
+  }
+}
 
 /*
     For parent classses such as "insecure-img"

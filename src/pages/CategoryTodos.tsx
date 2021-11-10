@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { useTypedSelector } from "hooks";
 import { setPageName } from "store/actions/appActions";
-import TodoList from "components/TodoList";
+import TaskList from "components/TaskList";
 
 const CategoryTodos: React.FC = () => {
 
@@ -21,8 +21,8 @@ const CategoryTodos: React.FC = () => {
     }, [])
     
     return (
-        <section className="category-todos">
-            <TodoList category={ category! } />
+        <section aria-label="todo-list">
+            <TaskList category={ category! } />
         </section>
     )
 }

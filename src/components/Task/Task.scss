@@ -1,0 +1,56 @@
+@import "styles/variables";
+
+.task {
+    display: flex;
+    align-items: center;
+    width: 25rem;
+    padding: 0.9rem;
+    border-radius: $border-radius;
+    user-select: none;
+    touch-action: none; // To prevent wrong behavior with touches
+    transition: .3s all ease-out;
+
+    &_completed {
+        opacity: .5;
+    }
+
+    &__ico {
+        margin-right: 0.9rem;
+    }
+
+    &__description {
+        margin-bottom: 0.3rem;
+    }
+}
+
+// Animations
+.task {
+    &-exit {
+        animation: task-exit 300ms forwards;
+    }
+}
+
+@keyframes task-exit {
+    0% {
+        transform: translateX(-150px);
+        
+        .task {
+            opacity: 1;
+        }
+
+        .task.task_completed {
+            opacity: .5;
+        }
+
+    }
+    100% {
+        transform: translateX(-300px);
+        opacity: 0;
+    }
+}
+
+@media only screen and (max-width: 521px) {
+    .task {
+        width: 90%;
+    }
+}

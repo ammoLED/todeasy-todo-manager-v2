@@ -1,6 +1,6 @@
 import { Category } from "types";
 import { CategoriesActionTypes, CategoriesAction } from "store/actions/categoriesActions";
-import { TodosActionTypes, TodosAction } from "store/actions/todosActions";
+import { TasksActionTypes, TasksAction } from "store/actions/tasksActions";
 
 
 interface CategoriesState {
@@ -17,7 +17,7 @@ const initialState: CategoriesState = {
                 startColor: "#FE975C",
                 endColor: "#FE3057"
             },
-            todos: [
+            tasks: [
                 {
                     id: "1",
                     title: "Wroom my car",
@@ -35,7 +35,7 @@ const initialState: CategoriesState = {
                 startColor: "#FE975C",
                 endColor: "#FE3057"
             },
-            todos: [
+            tasks: [
                 {
                     id: "1",
                     title: "Kill niggers",
@@ -60,7 +60,7 @@ const initialState: CategoriesState = {
                 startColor: "#D852D5",
                 endColor: "#FE3057"
             },
-            todos: [
+            tasks: [
                 {
                     id: "1",
                     title: "I love to eat",
@@ -78,7 +78,7 @@ const initialState: CategoriesState = {
                 startColor: "#20E4FE",
                 endColor: "#1C4EFD"
             },
-            todos: []
+            tasks: []
         },
         {
             ico: "calendar",
@@ -88,33 +88,33 @@ const initialState: CategoriesState = {
                 startColor: "#20E4FE",
                 endColor: "#1C4EFD"
             },
-            todos: []
+            tasks: []
         },
         {
             title: "Fill 3",
-            todos: []
+            tasks: []
         },
         {
             title: "Fill 4",
-            todos: []
+            tasks: []
         },
         {
             title: "Fill 5",
-            todos: []
+            tasks: []
         },
         {
             title: "Fill 6",
-            todos: []
+            tasks: []
         },
         {
             title: "Fill 7",
-            todos: []
+            tasks: []
         }        
     ]
 }
 
 
-const categoriesReducer = (state = initialState, action: CategoriesAction | TodosAction): CategoriesState => {
+const categoriesReducer = (state = initialState, action: CategoriesAction | TasksAction): CategoriesState => {
     switch(action.type) {
         case CategoriesActionTypes.ADD_CATEGORY: {
 
@@ -147,7 +147,7 @@ const categoriesReducer = (state = initialState, action: CategoriesAction | Todo
 
         }
 
-        case TodosActionTypes.ADD_TODO: {
+        case TasksActionTypes.ADD_TASK: {
             
             const categoryIdx = state.all.findIndex(category => category.title === action.payload.categoryTitle)
             const newArr = [...state.all]
@@ -155,9 +155,9 @@ const categoriesReducer = (state = initialState, action: CategoriesAction | Todo
             newArr[categoryIdx] = {
                 ...newArr[categoryIdx],
 
-                todos: [
-                    ...newArr[categoryIdx].todos,
-                    action.payload.todo
+                tasks: [
+                    ...newArr[categoryIdx].tasks,
+                    action.payload.task
                 ]
             }
 
@@ -167,18 +167,18 @@ const categoriesReducer = (state = initialState, action: CategoriesAction | Todo
 
         }
 
-        case TodosActionTypes.DELETE_TODO: {
+        case TasksActionTypes.DELETE_TASK: {
 
             const newArr = [...state.all]
             const categoryIdx = newArr.findIndex(category => category.title === action.payload.categoryTitle)
-            const todoIdx     = newArr[categoryIdx].todos.findIndex(todo => todo.id === action.payload.todoId)
+            const taskIdx     = newArr[categoryIdx].tasks.findIndex(task => task.id === action.payload.taskId)
 
             newArr[categoryIdx] = {
                 ...newArr[categoryIdx],
 
-                todos: [
-                    ...newArr[categoryIdx].todos.slice(0, todoIdx),
-                    ...newArr[categoryIdx].todos.slice(todoIdx + 1)
+                tasks: [
+                    ...newArr[categoryIdx].tasks.slice(0, taskIdx),
+                    ...newArr[categoryIdx].tasks.slice(taskIdx + 1)
                 ]
             }
 
@@ -188,7 +188,7 @@ const categoriesReducer = (state = initialState, action: CategoriesAction | Todo
 
         }
 
-        case TodosActionTypes.SET_TODO_COMPLETED: {
+        case TasksActionTypes.SWITCH_TASK_COMPLETED: {
 
             const newArr = [...state.all]
             const categoryIdx = newArr.findIndex(category => category.title === action.payload.categoryTitle)
@@ -196,19 +196,17 @@ const categoriesReducer = (state = initialState, action: CategoriesAction | Todo
             newArr[categoryIdx] = {
                 ...newArr[categoryIdx],
 
-                todos: newArr[categoryIdx].todos.map(todo => {
-                    if (todo.id === action.payload.todoId) {
+                tasks: newArr[categoryIdx].tasks.map(task => {
+                    if (task.id === action.payload.taskId) {
                         return {
-                            ...todo,
-                            completed: true
+                            ...task,
+                            completed: !task.completed
                         }
                     }
 
-                    return todo
+                    return task
                 })
             }
-
-            console.log(newArr)
 
             return {
                 all: newArr
