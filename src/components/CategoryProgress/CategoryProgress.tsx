@@ -1,19 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import "./CategoryProgress.scss";
-import { useTodayTasks } from "hooks";
+import { Category } from "types";
 
-interface CSSStyleDeclarationWithR extends CSSStyleDeclaration {
-    r: string;
+interface CSSStyleDeclarationWithRadius extends CSSStyleDeclaration {
+    r: string; // radius
 }
 
-const CategoryProgress: React.FC = () => {
+interface Props {
+    category: Category
+}
+
+const CategoryProgress: React.FC<Props> = ({ category }) => {
 
     const [ progressLength, setProgressLength ] = useState(0)
     const progressRef = useRef() as React.MutableRefObject<SVGCircleElement> 
-    const todosToday  = useTodayTasks()
 
-    const completedPercent = todosToday.filter(todo => todo.completed).length / todosToday.length * 100 
+    const completedTasks   = category.tasks.filter(task => task.completed)
+    const completedPercent = completedTasks.length / category.tasks.length * 100 
     const offset           = progressLength - completedPercent / 100 * progressLength
 
     useEffect(() => {
@@ -36,7 +40,7 @@ const CategoryProgress: React.FC = () => {
             
             P.S. I dont know if it's good solution, would be glad if you said me :)
         */
-        const progressComputedStyles = window.getComputedStyle(progressRef.current) as CSSStyleDeclarationWithR
+        const progressComputedStyles = window.getComputedStyle(progressRef.current) as CSSStyleDeclarationWithRadius
         const radius                 = parseInt(progressComputedStyles.r.replace(/px/, ''), 10)
 
         setProgressLength( 2 * Math.PI * radius )        
@@ -69,4 +73,4 @@ const CategoryProgress: React.FC = () => {
     )
 }
 
-export default CategoryProgress
+export default React.memo(CategoryProgress)

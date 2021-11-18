@@ -16,9 +16,9 @@ const Header: React.FC = () => {
 
     return (
         <header className="header">
-            {buttonBack}
+            { buttonBack }
             <h1> {pageName} </h1>
-            <CategoryProgress />
+            <CategoryProgress category={{tasks: [], title: ""}} />
         </header>
     )
 }
