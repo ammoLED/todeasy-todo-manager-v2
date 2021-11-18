@@ -1,0 +1,24 @@
+@import "styles/variables";
+
+.inline-edit {
+    padding: 5px;
+    resize: none;
+    min-height: 1rem;
+    max-height: 100px;
+    width: 100%;
+    background: transparent;
+    color: $clr-text-primary;
+    cursor: pointer;
+    border-radius: $border-radius;
+    outline: none;
+    border: 1px solid #2D3149;
+
+    &::placeholder {
+        color: darken($clr-text-primary, 20%);
+    }
+
+    &:focus,
+    &:hover {
+        border-color: #656D99;
+    }
+}

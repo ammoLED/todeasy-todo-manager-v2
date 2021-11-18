@@ -1,10 +1,11 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
 import moment from "moment"
 
 import "./Task.scss"
 import { Task as ITask } from "types"
 import { deleteTask, switchTaskCompleted } from "store/actions/tasksActions"
+import { defaultGradient } from "constants/defaultValues"
 
 interface Props {
     task: ITask
@@ -30,8 +31,8 @@ const Task: React.FC<Props> = ({ task, categoryTitle, categoryIco = "cubes" }) =
         e.preventDefault()
         if (target.current) {
             
-            startX.current        = e.pageX
             isPointerDown.current = true
+            startX.current        = e.pageX
             
             target.current.style.cursor = "grabbing"
             
@@ -107,8 +108,9 @@ const Task: React.FC<Props> = ({ task, categoryTitle, categoryIco = "cubes" }) =
             onPointerOut={handlePointerOut}
             style={{
                 background: `linear-gradient(
-                    135deg, ${task.gradient?.startColor || "#2D3149"} 0%, 
-                    ${task.gradient?.endColor || "#656D99"} 100%
+                    -20deg, 
+                    ${task.gradient?.startColor || defaultGradient.startColor} 0%, 
+                    ${task.gradient?.endColor   || defaultGradient.endColor} 100%
                 )`
             }} 
         >

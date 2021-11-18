@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Category as ICategory } from 'types'
+import { defaultGradient } from "constants/defaultValues"
 
 interface Props {
     category: ICategory
@@ -12,8 +13,9 @@ const Category: React.FC<Props> = ({ category }) => {
 
     const styles = {
         background: `linear-gradient(
-            135deg, ${category.gradient?.startColor || "#fff"} 0%, 
-            ${category.gradient?.endColor || "#3423"} 100%
+            -20deg, 
+            ${category.gradient?.startColor || defaultGradient.startColor} 0%, 
+            ${category.gradient?.endColor   || defaultGradient.endColor} 100%
         )`
     }
 

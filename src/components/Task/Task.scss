@@ -1,25 +1,23 @@
 @import "styles/variables";
+@import "styles/mixins";
 
 .task {
-    display: flex;
-    align-items: center;
-    width: 25rem;
-    padding: 0.9rem;
-    border-radius: $border-radius;
-    user-select: none;
-    touch-action: none; // To prevent wrong behavior with touches
-    transition: .3s all ease-out;
+    @include TaskStyles();
+
+    &__title, &__description {
+        word-break: break-all;
+    }
+
+    &__description {
+        margin-bottom: 0.3rem;
+    }
 
     &_completed {
         opacity: .5;
     }
 
-    &__ico {
-        margin-right: 0.9rem;
-    }
-
-    &__description {
-        margin-bottom: 0.3rem;
+    &:focus {
+        border: 0,06rem solid #fff;
     }
 }
 
@@ -27,6 +25,10 @@
 .task {
     &-exit {
         animation: task-exit 300ms forwards;
+    }
+
+    &-enter {
+        animation: task-enter 300ms forwards;
     }
 }
 
@@ -46,6 +48,17 @@
     100% {
         transform: translateX(-300px);
         opacity: 0;
+    }
+}
+
+@keyframes task-enter {
+    0% {
+        transform: translate(150px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0px);
+        opacity: 1;
     }
 }
 

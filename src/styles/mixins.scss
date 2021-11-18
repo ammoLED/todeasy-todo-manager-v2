@@ -1,0 +1,16 @@
+@mixin TaskStyles() {
+    display: flex;
+    align-items: center;
+    min-height: 5rem;
+    width: 25rem;
+    padding: 0.9rem;
+    border-radius: $border-radius;
+    user-select: none;
+    touch-action: none; // To prevent wrong behavior with touches
+    transition: .3s all ease-out;
+
+    // For Category Ico
+    i {
+       margin-right: 0.9rem; 
+    }
+}

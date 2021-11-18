@@ -1,18 +1,29 @@
 @import "styles/variables";
+@import "styles/mixins";
 
 .task-add {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-    width: 25rem;
-    border: 1px dashed $clr-text-primary;
-    border-radius: $border-radius;
+    @include TaskStyles();
     cursor: pointer;
-    user-select: none;
-    transition: .3s all ease-out;
+    justify-content: center;
+    border: 1px dashed #656D99;
+    
 
     i {
         font-size: 25px;
+    }
+
+    &__submit {
+        width: 100%;
+    }
+
+    &_active {
+        cursor: default;
+        justify-content: flex-start;
+    }
+}
+
+@media only screen and (max-width: 521px) {
+    .task-add {
+        width: 90%;
     }
 }

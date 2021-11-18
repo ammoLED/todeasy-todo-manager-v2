@@ -7,7 +7,7 @@ import Header from "components/Header";
 import routes from "pages/routes";
 
 const App: React.FC = () => {
-  
+
   return (
     <div className="app">
       <div className="container">
@@ -28,6 +28,7 @@ const App: React.FC = () => {
       </div>
     </div>
   );
+  
 }
 
 export default App;
