@@ -6,7 +6,7 @@ import Category from "components/Category"
 
 const CategoryList: React.FC = () => {
 
-    const categories = useTypedSelector(state => state.categories.all)
+    const categories = useTypedSelector(state => state.categories)
     
     return (
         <div className="category-list">

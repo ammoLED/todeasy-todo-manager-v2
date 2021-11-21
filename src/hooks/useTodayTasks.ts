@@ -5,7 +5,7 @@ import { Task } from "types"
 
 const useTodayTasks = () => {
 
-    const categories = useTypedSelector(state => state.categories.all)
+    const categories = useTypedSelector(state => state.categories)
 
     let tasks: Task[] = []
 

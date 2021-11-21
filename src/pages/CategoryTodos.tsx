@@ -9,7 +9,7 @@ import TaskList from "components/TaskList";
 const CategoryTodos: React.FC = () => {
 
     const dispatch   = useDispatch()
-    const categories = useTypedSelector(state => state.categories.all)
+    const categories = useTypedSelector(state => state.categories)
     const params     = useParams<{categoryTitle: string}>()
     
     const category = categories.find(category => category.title === params.categoryTitle)

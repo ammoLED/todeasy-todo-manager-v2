@@ -1,5 +1,5 @@
 import "./Header.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useTypedSelector } from "hooks";
@@ -11,7 +11,10 @@ const Header: React.FC = () => {
 
     const location = useLocation()
     const { pageName } = useTypedSelector(state => state.app)
-
+    
+    const categories = useTypedSelector(state => state.categories)
+    
+    
     const buttonBack = (location.pathname !== CATEGORIES_ROUTE) ? <ButtonBack/> : null
 
     return (
