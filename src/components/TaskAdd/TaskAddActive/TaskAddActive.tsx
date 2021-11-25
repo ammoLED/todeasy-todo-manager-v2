@@ -65,7 +65,7 @@ const TaskAddActive: React.FC<Props> = ({ categoryTitle, categoryIco }) => {
                 />
 
                 <GradientSelector 
-                    selectedGradientId={gradient.id} 
+                    selectedGradient={gradient.id} 
                     onSelectGradient={setGradient}
                 />
 

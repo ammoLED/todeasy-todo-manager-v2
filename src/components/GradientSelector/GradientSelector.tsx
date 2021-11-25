@@ -6,11 +6,11 @@ import { Gradient } from "types"
 
 interface Props {
     className?: string
-    selectedGradientId: Gradient["id"]
+    selectedGradient: Gradient["id"]
     onSelectGradient: (gradient: Gradient) => void
 }
 
-const GradientSelector: React.FC<Props> = ({ className = '', selectedGradientId, onSelectGradient }) => {
+const GradientSelector: React.FC<Props> = ({ className = '', selectedGradient, onSelectGradient }) => {
 
     const gradients = useTypedSelector(state => state.app.customGradients)
 
@@ -18,7 +18,7 @@ const GradientSelector: React.FC<Props> = ({ className = '', selectedGradientId,
         <div className={`${className} gradient-selector`}>
             {gradients.map(gradient => {
 
-                const isChecked = selectedGradientId === gradient.id
+                const isChecked = selectedGradient === gradient.id
 
                 return (
                     <label 

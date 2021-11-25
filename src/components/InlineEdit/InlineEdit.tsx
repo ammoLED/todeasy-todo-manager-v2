@@ -13,9 +13,12 @@ const InlineEdit: React.FC<Props> = ({ value, setValue, fontSize, className }) =
     
     const [ editingValue, setEditingValue ] = useState(value)
 
+    function handleClick( e: React.FormEvent<HTMLTextAreaElement> ) {
+        e.currentTarget.style.cursor = 'text'
+    }
 
     // Resize textarea if there is a lot of text
-    function handleHeight( e: React.FormEvent<HTMLTextAreaElement> ) {
+    function handleInput( e: React.FormEvent<HTMLTextAreaElement> ) {
 
         if (e.currentTarget.scrollHeight > (fontSize * 2)) {
 
@@ -41,6 +44,8 @@ const InlineEdit: React.FC<Props> = ({ value, setValue, fontSize, className }) =
         and also set html value equals to {value} from props 
     */
     function handleBlur( e: React.FocusEvent<HTMLTextAreaElement> ) {
+        e.currentTarget.style.cursor = "pointer"
+        
         if (e.target.value.trim() === "") {
             setEditingValue(value)
         }
@@ -53,10 +58,11 @@ const InlineEdit: React.FC<Props> = ({ value, setValue, fontSize, className }) =
         <textarea className={`inline-edit ${className}`}
             rows={1}
             value={editingValue}
-            onInput={handleHeight}
+            onInput={handleInput}
             onChange={e => setEditingValue(e.target.value)}
             onKeyDown={handleKeyDown}
             onBlur={handleBlur}
+            onClick={handleClick}
         />
     )
 }
