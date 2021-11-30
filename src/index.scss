@@ -49,20 +49,26 @@ h1 {font-size: clamp(1.5rem, 10vw, 3rem);} // 25px
 }
 
 .btn {
+  padding: 0.3em;
   outline: none;
   background: none;
   border: none;
+  border-radius: $border-radius;
   cursor: pointer;
   color: #fff;
+
+  &:focus {
+    outline: 1px solid #fff;
+  }
 }
 
 // Font-sizes
-.item {
-  &-title {
+.fz {
+  &-primary {
     font-size: 1rem;
   }
   
-  &-description {
+  &-secondary {
     font-size: .8rem
   }
 }

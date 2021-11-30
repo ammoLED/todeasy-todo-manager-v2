@@ -18,32 +18,30 @@ const TaskList: React.FC<Props> = ({ category }) => {
     }
     
     return (
-        <>
-            <TransitionGroup className="task-list">
-                {category.tasks.map(task => {
+        <TransitionGroup className="task-list">
+            {category.tasks.map(task => {
 
-                    return (
-                        <CSSTransition 
-                            timeout={300}
-                            classNames={classesAnim}
-                            key={task.id}  
-                        >
-                            <Task 
-                                task={task} 
-                                categoryIco={category.ico}
-                                categoryTitle={category.title}
-                            />
-                        </CSSTransition>
-                    )
+                return (
+                    <CSSTransition 
+                        timeout={300}
+                        classNames={classesAnim}
+                        key={task.id}  
+                    >
+                        <Task 
+                            task={task} 
+                            categoryIco={category.ico}
+                            categoryTitle={category.title}
+                        />
+                    </CSSTransition>
+                )
 
-                })}
+            })}
 
-                <TaskAdd 
-                    categoryTitle={category.title} 
-                    categoryIco={category.ico}
-                />
-            </TransitionGroup>
-        </>
+            <TaskAdd 
+                categoryTitle={category.title} 
+                categoryIco={category.ico}
+            />
+        </TransitionGroup>
     )
 }
 

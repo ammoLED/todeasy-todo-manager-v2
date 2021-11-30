@@ -24,13 +24,14 @@
             stroke: $clr-brand-blue;
         }
 
-        // This part will fill with color
+        // Completed part will fill with color
         &-progress {
             stroke:#D95FF7;
 
             // Start at 12 O'Clock
             transform-origin: center;
             transform: rotate(-90deg);
+            transition: .3s ease-in-out;
         }
     }
 

@@ -5,12 +5,25 @@
     svg {
         width: 100%;
         height: 100%;
+    
+        &:hover {
+            path {
+                animation: smooth-slide 1s forwards infinite ease-in-out;
+            }
+        }
+    }
+}
+
+@keyframes smooth-slide {
+    0% {
+        transform: translateX(0px);
     }
 
-    &:hover svg,
-    &:focus svg {
-        path {
-            fill: red;
-        }
+    50% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        transform: translateX(0px);
     }
 }

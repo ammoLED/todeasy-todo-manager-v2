@@ -1,7 +1,7 @@
 import moment from "moment"
 
-import { useTypedSelector } from "hooks"
 import { Task } from "types"
+import { useTypedSelector } from "hooks"
 
 const useTodayTasks = () => {
 

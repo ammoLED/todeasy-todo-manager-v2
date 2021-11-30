@@ -12,8 +12,19 @@
         font-size: 25px;
     }
 
+    &__info {
+        &-title, &-description, &-gradient {
+            margin-bottom: 0.5rem;
+        }
+    }
+
     &__submit {
         width: 100%;
+        background: linear-gradient(
+            -20deg, 
+            #2D3149, 
+            #656D99
+        )
     }
 
     &_active {

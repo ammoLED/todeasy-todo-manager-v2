@@ -28,11 +28,11 @@ const Category: React.FC<Props> = ({ category }) => {
                 />
             </div>
             
-            <h2 className="category__title item-title">
+            <h2 className="category__title fz-primary">
                 {category.title}
             </h2>
 
-            <p className="category__description item-description">
+            <p className="category__description fz-secondary">
                 {category.tasks.length} Tasks
             </p>
         </Link>

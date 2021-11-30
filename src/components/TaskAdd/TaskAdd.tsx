@@ -12,18 +12,14 @@ const TaskAdd: React.FC<Props> = ({ categoryTitle, categoryIco = "cubes" }) => {
 
     const [ isActive, setActive ] = useState(false)
 
+    const view = isActive ? <TaskAddActive categoryTitle={categoryTitle} categoryIco={categoryIco} /> : <i className="fa fa-plus"/>
+
     return (
         <div 
             className={`task-add ${isActive ? "task-add_active" : ""}`} 
             onClick={() => setActive(true)}
         >
-            { 
-                isActive 
-                ? 
-                    <TaskAddActive categoryTitle={categoryTitle} categoryIco={categoryIco} />
-                : 
-                    <i className="fa fa-plus"/>
-            }
+            {view}
         </div>
     )
     

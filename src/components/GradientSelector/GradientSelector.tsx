@@ -15,7 +15,7 @@ const GradientSelector: React.FC<Props> = ({ className = '', selectedGradient, o
     const gradients = useTypedSelector(state => state.app.customGradients)
 
     return (
-        <div className={`${className} gradient-selector`}>
+        <div className={`gradient-selector ${className}`}>
             {gradients.map(gradient => {
 
                 const isChecked = selectedGradient === gradient.id

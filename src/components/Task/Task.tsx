@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useRef } from "react"
 import { useDispatch } from "react-redux"
 import moment from "moment"
 
@@ -29,6 +29,7 @@ const Task: React.FC<Props> = ({ task, categoryTitle, categoryIco = "cubes" }) =
 
     function handlePointerDown(e: React.PointerEvent) {
         e.preventDefault()
+
         if (target.current) {
             
             isPointerDown.current = true
@@ -41,6 +42,7 @@ const Task: React.FC<Props> = ({ task, categoryTitle, categoryIco = "cubes" }) =
     
     function handlePointerMove(e: React.PointerEvent) {
         e.preventDefault()
+
         if (target.current && isPointerDown.current) {
 
             offset.current = e.pageX - startX.current
@@ -98,6 +100,8 @@ const Task: React.FC<Props> = ({ task, categoryTitle, categoryIco = "cubes" }) =
         }
         
     }
+
+    const description = task.description && <p className="task__description fz-secondary"> {task.description} </p>
     
     return (
         <div 
@@ -119,15 +123,11 @@ const Task: React.FC<Props> = ({ task, categoryTitle, categoryIco = "cubes" }) =
             </div>
             
             <div className="task__info">
-                <h2 className="task__title item-title">
-                    {task.title}
-                </h2>
+                <h2 className="task__title fz-primary"> {task.title} </h2>
 
-                <p className="task__description item-description">
-                    {task.description}
-                </p>
+                {description}
 
-                <p className="item-description">
+                <p className="fz-secondary">
                     {moment(task.expiresAt).format("DD MMM [-] hh:mm A")}
                 </p>
             </div>
