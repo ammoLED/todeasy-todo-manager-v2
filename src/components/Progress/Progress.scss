@@ -31,7 +31,7 @@
             // Start at 12 O'Clock
             transform-origin: center;
             transform: rotate(-90deg);
-            transition: .3s ease-in-out;
+            transition: stroke-dashoffset .3s ease-in-out;
         }
     }
 
