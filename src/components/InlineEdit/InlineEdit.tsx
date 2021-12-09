@@ -1,93 +1,56 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 
 import "./InlineEdit.scss"
 
 interface Props {
     value: string
     setValue: (...args: any) => void
-    fontSize: number
-    error?: string
-    clearError?: () => void
+    validError?: string | null
     placeholder?: string
     className?: string
 }
 
-const InlineEdit: React.FC<Props> = ({ value, setValue, fontSize, placeholder, error, clearError, className }) => {
+const InlineEdit: React.FC<Props> = ({ value, setValue, validError, placeholder, className }) => {
     
     const [ editingValue, setEditingValue ] = useState(value)
-
-    useEffect(() => {
-        //Clear value to see error text in placeholder
-        
-        if (error) {
-            setEditingValue("")
-        }
-    }, [error])
-
-    /*
-        CASE:
-            When <Parent></Parent> set {value} to empty string in his state (onSubmit)
-            editingValue will stay the same inside <InlineEdit/> till next render.       
-    */
-    useEffect(() => {
-        setEditingValue(value)
-    }, [value])
 
     function handleClick( e: React.FormEvent<HTMLTextAreaElement> ) {
         e.currentTarget.style.cursor = 'text'
     }
 
     // Resize textarea if there is a lot of text
-    function handleInput( e: React.FormEvent<HTMLTextAreaElement> ) {
+    function handleHeight( e: React.FormEvent<HTMLTextAreaElement> ) {
 
-        // Clear error on input
-        if (error && clearError) {
-            clearError()
-        }
+        const target = e.currentTarget
 
-        if (e.currentTarget.scrollHeight > (fontSize * 2)) {
-
-            e.currentTarget.style.height = `${e.currentTarget.scrollHeight - fontSize}px`
-        
+        if (target.scrollHeight > 32) {
+            target.style.height = "5px"
+            target.style.height = target.scrollHeight + "px";
         }
     }
 
     
-    // Call blur() on textarea
-    function handleKeyDown( e: React.KeyboardEvent<HTMLTextAreaElement> ) {
+    function handleEscape( e: React.KeyboardEvent<HTMLTextAreaElement> ) {
         if (e.key === "Enter" || e.key === "Escape") {
             e.currentTarget.blur()
         }
     } 
 
-
-    /*
-        If new value is empty string we dont need
-        make render for whole parent component for no reason
-        Better just render <InlineEdit/> 
-    */
     function handleBlur( e: React.FocusEvent<HTMLTextAreaElement> ) {
-        e.currentTarget.style.cursor = "pointer"
-        
-        if (e.target.value.trim() === "") {
-            setEditingValue(e.target.value)
-        }
-        else {
-            setValue(e.target.value)
-        }
+        e.target.style.cursor = "pointer"
     }
 
     return (
         <textarea 
             className={
-                `inline-edit ${error ? "inline-edit_error" : ""} ${className}`
+                `inline-edit ${validError ? "inline-edit_error" : ""} ${className}`
             }
-            placeholder={error || placeholder}
+            placeholder={validError || placeholder}
             rows={1}
             value={editingValue}
-            onInput={handleInput}
+            onInput={handleHeight}
             onChange={e => setEditingValue(e.target.value)}
-            onKeyDown={handleKeyDown}
+            onKeyDown={handleEscape}
             onBlur={handleBlur}
             onClick={handleClick}
         />

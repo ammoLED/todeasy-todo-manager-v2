@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { v4 as uuid } from "uuid"
 
@@ -7,39 +7,64 @@ import GradientSelector from "components/GradientSelector"
 import { Gradient } from "types"
 import { addTask } from "store/actions/tasksActions";
 
+// TODO
 interface Props {
     categoryTitle: string
     categoryIco?: string
 }
 
-interface Validation {
-    title: undefined | string
+const useValid = (value: string, validators?: {}, label?: string) => {
+
+    const [error, setError] = useState('') 
+
+    useEffect(() => {
+        validate(value)
+    }, [value])
+
+    function validate(value: string) {
+        for (let key in validators) {
+            switch (key) {
+                case "required": {
+                    if (!value.trim().length) {
+                        return setError(`${label || 'Field'} is required`)
+                    }
+
+                    return setError("")
+                }
+            }
+        }
+    }
+
+    return { error }
+
+}
+
+const useInput = (initialValue: string, validators?: {}, label?: string) => {
+
+    const [ value, setValue ] = useState(initialValue)
+    const { error } = useValid(value, validators, label)
+
+    function onChange( e: React.FormEvent<HTMLInputElement> ) {
+        setValue(e.currentTarget.value)
+    }
+
+    return { value, onChange, error }
 }
 
 const TaskAddActive: React.FC<Props> = ({ categoryTitle, categoryIco }) => {
     
     const dispatch = useDispatch()
 
-    const [ title, setTitle ] = useState("")
-    const [ description, setDescription ] = useState("")
+    const title = useInput("")
+    const description = useInput("")
     const [ gradient, setGradient ] = useState<Gradient>({
         id: "__NOT_SELECTED__",
         startColor: "#2D3149",
         endColor: "#656D99"
     })
-    const [ validation, setValidation ] = useState<Validation>({
-        title: undefined
-    })
 
     function handleCreateTask(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-
-        if (!title) {
-            return setValidation(state => ({
-                ...state, 
-                title: "Title is required"
-            }))
-        }
 
         dispatch(addTask({
             categoryTitle,
@@ -53,13 +78,6 @@ const TaskAddActive: React.FC<Props> = ({ categoryTitle, categoryIco }) => {
         }))
 
         clearInputs()
-    }
-
-    function clearValidationError(key: keyof Validation) {
-        setValidation(state => ({
-            ...state,
-            [key]: undefined
-        }))
     }
 
     function clearInputs() {
@@ -81,9 +99,7 @@ const TaskAddActive: React.FC<Props> = ({ categoryTitle, categoryIco }) => {
                     placeholder="Title"
                     value={title} 
                     setValue={setTitle}
-                    error={validation.title}
-                    clearError={() => clearValidationError("title")}
-                    fontSize={16}
+                    validError={title.valid}
                 />
 
                 <InlineEdit 
@@ -91,7 +107,6 @@ const TaskAddActive: React.FC<Props> = ({ categoryTitle, categoryIco }) => {
                     placeholder="Description"
                     value={description} 
                     setValue={setDescription}
-                    fontSize={16}
                 />
 
                 <GradientSelector 
