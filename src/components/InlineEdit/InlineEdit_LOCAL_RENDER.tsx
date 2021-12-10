@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useState } from "react"
 
 import "./InlineEdit.scss"
 
@@ -12,6 +12,9 @@ interface Props {
 
 const InlineEdit: React.FC<Props> = ({ value, setValue, error, placeholder, className }) => {
     
+    const [ valueLocal, setValueLocal ] = useState(value)
+    const isTouched = useRef(false) // Show error after something was inserted into input
+    
     // Resize textarea if there is a lot of text
     function handleInput( e: React.FormEvent<HTMLTextAreaElement> ) {
 
@@ -21,6 +24,8 @@ const InlineEdit: React.FC<Props> = ({ value, setValue, error, placeholder, clas
             target.style.height = "5px"
             target.style.height = target.scrollHeight + "px";
         }
+
+        isTouched.current = true
 
     }
     
@@ -46,7 +51,7 @@ const InlineEdit: React.FC<Props> = ({ value, setValue, error, placeholder, clas
 
     }
 
-    const errorClass = (!value && error) ? "inline-edit_error" : ""
+    const errorClass = (isTouched.current && !valueLocal && error) ? "inline-edit_error" : ""
     
     /*
         Using placeholder isn't best variant to alert about errors, 
@@ -60,9 +65,9 @@ const InlineEdit: React.FC<Props> = ({ value, setValue, error, placeholder, clas
             }
             placeholder={errorClass ? error : placeholder}
             rows={1}
-            value={value}
+            value={valueLocal}
             onInput={handleInput}
-            onChange={e => setValue(e.target.value)}
+            onChange={e => setValueLocal(e.target.value)}
             onKeyDown={handleKeyDown}
             onBlur={handleBlur}
             onClick={handleClick}

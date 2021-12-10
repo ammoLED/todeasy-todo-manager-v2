@@ -6,11 +6,11 @@ import { Gradient } from "types"
 
 interface Props {
     className?: string
-    selectedGradient: Gradient["id"]
-    onSelectGradient: (gradient: Gradient) => void
+    activeGradientId: Gradient["id"]
+    setGradient: (gradient: Gradient) => void
 }
 
-const GradientSelector: React.FC<Props> = ({ className = '', selectedGradient, onSelectGradient }) => {
+const GradientSelector: React.FC<Props> = ({ className = '', activeGradientId, setGradient }) => {
 
     const gradients = useTypedSelector(state => state.app.customGradients)
 
@@ -18,13 +18,13 @@ const GradientSelector: React.FC<Props> = ({ className = '', selectedGradient, o
         <div className={`gradient-selector ${className}`}>
             {gradients.map(gradient => {
 
-                const isChecked = selectedGradient === gradient.id
+                const isChecked = activeGradientId === gradient.id
 
                 return (
                     <label 
                         key={gradient.id}
                         className="gradient-selector__radio-gradient radio-gradient" 
-                        onChange={() => onSelectGradient(gradient)}
+                        onChange={() => setGradient(gradient)}
                     >
                         <input type="radio" name="gradient" defaultChecked={isChecked}/>
 

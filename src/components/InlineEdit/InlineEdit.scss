@@ -14,7 +14,12 @@
     border: 0.06em solid #2D3149;
 
     &::placeholder {
-        color: $clr-brand-blue;
+        color: #2D3149;
+    }
+
+    &:focus,
+    &:hover {
+        border-color: #656D99;
     }
 
     &_error {
@@ -26,12 +31,7 @@
 
         &:focus,
         &:hover {
-            border-color: #CE304C !important;
+            border-color: #CE304C;
         }
-    }
-
-    &:focus,
-    &:hover {
-        border-color: #656D99;
     }
 }
