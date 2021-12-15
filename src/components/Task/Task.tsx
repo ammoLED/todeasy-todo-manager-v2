@@ -34,7 +34,7 @@ const Task: React.FC<Props> = ({ task, categoryTitle, categoryIco = "cubes" }) =
             
             isPointerDown.current = true
             startX.current        = e.pageX
-            
+
             target.current.style.cursor = "grabbing"
             
         }
@@ -82,8 +82,6 @@ const Task: React.FC<Props> = ({ task, categoryTitle, categoryIco = "cubes" }) =
     function makeDecision() {
         if (offset.current < minOffset) {
             // Swiped to Left
-
-            console.log('LEFT')
             
             dispatch(deleteTask({
                 categoryTitle,

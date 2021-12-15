@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 
 import "./InlineEdit.scss"
 
@@ -11,9 +11,13 @@ interface Props {
 }
 
 const InlineEdit: React.FC<Props> = ({ value, setValue, error, placeholder, className }) => {
+
+    const isTouched = useRef(false)
     
     // Resize textarea if there is a lot of text
     function handleInput( e: React.FormEvent<HTMLTextAreaElement> ) {
+
+        isTouched.current = true
 
         const target = e.currentTarget
         
@@ -46,7 +50,7 @@ const InlineEdit: React.FC<Props> = ({ value, setValue, error, placeholder, clas
 
     }
 
-    const errorClass = (!value && error) ? "inline-edit_error" : ""
+    const errorClass = (isTouched.current && !value && error) ? "inline-edit_error" : ""
     
     /*
         Using placeholder isn't best variant to alert about errors, 

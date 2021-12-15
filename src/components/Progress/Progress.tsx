@@ -39,10 +39,7 @@ const Progress = <ArrayType extends any[],> ({ array, field }: Props<ArrayType>)
     }, [])
 
     // Update progressRef line offset on new completedPercent (props)
-    useEffect(
-        updateStyles, 
-        [completedPercent]
-    )
+    useEffect(updateStyles, [completedPercent])
     
     function updateCircumference() {
         /*
